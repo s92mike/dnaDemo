@@ -1,0 +1,17 @@
+.border {
+	border: 1px solid #000;
+}
+
+.container.v1 {
+	padding: 20px;
+}
+
+.search-bar{
+  margin:20px;
+  text-align: center;
+}
+
+.search-bar input{
+  width:75%;
+  padding: 0px 6px;
+}
