@@ -17,7 +17,7 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: true, // serve in place to  404 response
     contentBase: './'
   }
-};
+} 

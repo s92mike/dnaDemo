@@ -1,27 +1,38 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
 import Sidebar from '../components/sidebar'
 import Maincontainer from '../components/maincontainer'
 
-import { getHeroes, searchHeroes } from '../actions/heroesActions'
-import { connect } from 'react-redux'
+import * as heroesActions from '../actions/heroesActions'
 
-@connect((store) => {
+
+@connect((store)=>{
     return {
-        heroes: store.heroes
+        heroes: store.heroR,
+        status: store.statusR
+    }
+}, (dispatch)=>{
+    return {
+        actions: bindActionCreators(heroesActions, dispatch)
     }
 })
 export default class App extends Component {
     componentWillMount() {
-        //
-    }
-    checkTerm(terms) {
-        this.props.dispatch(getHeroes())
-        //this.props.dispatch(searchHeroes('mirana', this.props.heroes))
+       this.props.actions.getHeroes()
     }
     render() {
+        const { heroes } = this.props
+        if(!heroes.heroes.length){
+            return (
+                <div className="text-center" style={{paddingTop: 18}}>
+                    <h1>Loading!!!</h1>
+                </div>
+            )
+        }
         return (
             <div className="container v1">
-                <button onClick={this.checkTerm.bind(this)}>Test</button>
                 <div className="row">
                     <Sidebar />
                     <Maincontainer />
