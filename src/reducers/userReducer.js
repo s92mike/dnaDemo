@@ -2,7 +2,7 @@ export default function render(state={
     user: {
         id: 0,
         name: null,
-        age: null
+        account: null
     }
 }, action) {
     

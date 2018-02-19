@@ -1,31 +1,22 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import Sidebar from '../components/sidebar'
-import Maincontainer from '../components/maincontainer'
+import Sidebar from './sidebar'
+import Maincontainer from './maincontainer'
 
-import * as heroesActions from '../actions/heroesActions'
+import { getHeroes } from '../actions/heroesActions'
+import { updateSearchItems } from '../actions/statusActions'
 
-@connect((store)=>{
-    return {
-        heroes: store.heroR,
-        status: store.statusR
-    }
-}, (dispatch)=>{
-    return {
-        actions: bindActionCreators(heroesActions, dispatch)
-    }
-})
 class App extends Component {
     componentWillMount() {
        this.props.getAllHeroes()
     }
     render() {
-        const { heroes } = this.props
+        const {heroes} = this.props
         if(!heroes.heroes.length){
             return (
-                <div className="text-center" style={{paddingTop: 18}}>
+                <div className="text-center" 
+                    style={{paddingTop: 18}}>
                     <h1>Loading!!!</h1>
                 </div>
             )
@@ -41,9 +32,10 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStoreToProps = (store) => {
     return {
-        heroes: state.heroes
+        heroes: store.heroR,
+        status: store.statusR
     }
 }
 
@@ -55,4 +47,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStoreToProps, mapDispatchToProps)(App)

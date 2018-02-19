@@ -21,22 +21,16 @@ export function getHeroes() {
             })
     }
 }
-export function searchHeroes (terms='', heroes = []) {
-    return function (dispatch) {
-        
-        //temp.filter(word => word == terms )
-        const temp = heroes.map(hero => hero.localized_name)
-        dispatch({ type: SEARCHHEROTERM, payload: 'test' })
+export function searchHeroes (heroes = []) {
+    return { 
+        type: SEARCHHEROTERM, 
+        payload: heroes
     }
 }
 
-export function selectHeroes(hero){
+export function selectHeroes(hero=[]){
     return {
         type: SELECTEDHERO,
         payload: hero
     }
-}
-
-export function displayItemList (maxItems, firstPage, maxList) {
-    
 }

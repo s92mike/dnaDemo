@@ -1,10 +1,10 @@
-    import { 
-        FILLEDHERO,
-        REJECTHERO,
-        SEARCHHERO,
-        SEARCHHEROTERM,
-        SELECTEDHERO
-    } from '../actions'
+import { 
+    FILLEDHERO,
+    REJECTHERO,
+    SEARCHHERO,
+    SEARCHHEROTERM,
+    SELECTEDHERO
+} from '../actions'
 
 export default function render(state={
     heroes: [],
@@ -15,10 +15,10 @@ export default function render(state={
 }, action) {
     switch (action.type) {
         case SEARCHHERO:
-            return { ...state, fetching: true }
+            return {...state, fetching: true}
             break
         case REJECTHERO:
-            return { ...state, fetching: false, error: action.payload }
+            return {...state, fetching: false, error: action.payload}
             break
         case FILLEDHERO:
             return { 
@@ -29,9 +29,9 @@ export default function render(state={
             }
             break
         case SEARCHHEROTERM:
-            return { ...state, hero: action.payload }
+            return {...state, heroes: action.payload}
         case SELECTEDHERO:
-            return { ...state, hero: action.payload }
+            return {...state, hero: action.payload}
     }
     return state
 }

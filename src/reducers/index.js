@@ -5,6 +5,5 @@ import statusReducer from './statusReducer'
 
 export default combineReducers({
     heroR: heroesReducer,
-    userR: userReducer,
     statusR: statusReducer
 })
