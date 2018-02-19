@@ -15,6 +15,13 @@ class Pagelist extends Component {
                     key={item.id} >
                         <img src={`${OPENAPILINK+item.icon}`} /> {item.localized_name}
                 </li>)
+        if(!listItems.length){
+            return (
+                <div className="alert alert-danger">
+                    <strong>Denied!!!</strong> You Got Nothing!!!
+                </div>)
+
+        }
         return (
             <ul className="list-group" style={{padding: 6}}>
                 {listItems}

@@ -1,4 +1,5 @@
 export const PAGEMAX = 6
+export const SELECTORS = ["Heroes", "Items", "Players"]
 
 export const SEARCHHERO = "FETCH_HERO"
 export const REJECTHERO = "FETCH_HERO_REJECTED"
@@ -21,7 +22,7 @@ export const ACTIVEFIRST = "ACTIVEFIRST"
 export const ACTIVELAST = "ACTIVELAST"
 
 export const searchItemsByTerms = (terms, items) => {
-    return items.filter(item=>item.localized_name.toLowerCase().match("^" + terms))
+    return items.filter(item=>item.localized_name.toLowerCase().match("^" + terms.toLowerCase()))
 }
 export const checkDisabled = (conditions='',offPage='', maxItems='') => {
     switch(conditions){

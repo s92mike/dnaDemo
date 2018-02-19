@@ -5,6 +5,7 @@ import { OPENAPILINK } from '../actions'
 import { selectHeroes } from '../actions/heroesActions'
 
 import Itemsearch from './itemsearch'
+import Searchcategories from './searchcategories'
 
 class Maincontainer extends Component {
     componentWillMount() {
@@ -14,17 +15,7 @@ class Maincontainer extends Component {
         const { hero } = this.props.heroes
         return (
             <div className="col-8 p-2 border">
-                <ul className="nav nav-tabs">
-                    <li className="nav-item">
-                        <a className="nav-link active" href="javascript:void(0)">Heroes</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="javascript:void(0)">Items</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="javascript:void(0)">Players</a>
-                    </li>
-                </ul>            
+                <Searchcategories />
                 <Itemsearch />
                 <div className="p-2 well">
                     <img src={`${OPENAPILINK+hero.img}`} /><br/>

@@ -11,7 +11,6 @@ export default function render(state={
     status: "Heroes", //1-heroes, 2-items, 3-players
     pageListStatus: 0,
     maxListStatus: PAGEMAX,
-    maximumListArr: null,
     terms: '',
     searchItems: []
 }, action) {
