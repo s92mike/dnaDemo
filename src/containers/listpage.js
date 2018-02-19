@@ -26,25 +26,21 @@ export default class Listpage extends Component {
       const { status, heroes } = this.props
       const inActiveFirst = !status.pageListStatus?" disabled":""
       const inActiveLast = status.maxListStatus>=heroes.length?" disabled":""
-      const listNum = heroes.slice((status.maxListStatus-PAGEMAX),status.maxListStatus-3).map(item=><li className="page-item" key={item.id}><a className="page-link" href="javascript:void(0)">{(item.id)+1}</a></li>)
       return (
-          <nav aria-label="Page navigation" className="text-xs-center">
+          <nav aria-label="Page navigation justify-content-center" className="text-xs-center">
             <ul className="pagination">
               <li className={`page-item${inActiveFirst}`}>
                 <a onClick={this.prevPageButton.bind(this)} className="page-link" href="javascript:void(0)" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span className="sr-only">Previous</span>
+                  PREV
                 </a>
               </li>
-              {listNum}
               <li className={`page-item${inActiveLast}`}>
                 <a onClick={this.nextPageButton.bind(this)} className="page-link" href="javascript:void(0)" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span className="sr-only">Next</span>
+                  NEXT
                 </a>
               </li>
             </ul>
           </nav>  
         )
     }
-}
+} 

@@ -7,7 +7,6 @@ import Maincontainer from '../components/maincontainer'
 
 import * as heroesActions from '../actions/heroesActions'
 
-
 @connect((store)=>{
     return {
         heroes: store.heroR,

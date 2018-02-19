@@ -1,7 +1,8 @@
 import { 
     NEXTPAGE,
     PREVPAGE,
-    PAGEMAX
+    PAGEMAX,
+    GETCURRENTPAGE
 } from '../actions'
 export default function render(state={
     status: "Heroes", //1-heroes, 2-items, 3-players
@@ -16,7 +17,10 @@ export default function render(state={
             break
         case PREVPAGE:
             return {...state, pageListStatus: payload.first-PAGEMAX, maxListStatus: payload.offset-PAGEMAX}
-            break            
+            break     
+        case GETCURRENTPAGE:
+            return {...state, pageListStatus: payload.first, maxListStatus: payload.offset}
+            break
     }
     return state
 }

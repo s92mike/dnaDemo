@@ -4,13 +4,15 @@ import {
     REJECTHERO,
     SEARCHHERO,
     OPENAPILINK,
-    SEARCHHEROTERM 
+    SEARCHHEROTERM,
+    SELECTEDHERO,
+    OPENAPILINKAPI
 } from './index'
 
 export function getHeroes() {
     return function (dispatch) {
         dispatch({type: SEARCHHERO})
-        axios.get(`${OPENAPILINK}/heroes`)
+        axios.get(`${OPENAPILINK+OPENAPILINKAPI}/heroStats`)
             .then((response) => {
                 dispatch({ type: FILLEDHERO, payload: response.data })
             })
@@ -25,6 +27,13 @@ export function searchHeroes (terms='', heroes = []) {
         //temp.filter(word => word == terms )
         const temp = heroes.map(hero => hero.localized_name)
         dispatch({ type: SEARCHHEROTERM, payload: 'test' })
+    }
+}
+
+export function selectHeroes(hero){
+    return {
+        type: SELECTEDHERO,
+        payload: hero
     }
 }
 

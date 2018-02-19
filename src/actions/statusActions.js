@@ -1,24 +1,25 @@
 import { 
     NEXTPAGE,
-    PREVPAGE
+    PREVPAGE,
+    GETCURRENTPAGE
 } from './index'
 
 export function nextPageList(firstPage, nextPage){
-	return {
-		type: NEXTPAGE,
-		payload: {
-			first: firstPage,
-			offset: nextPage
-		}
-	}
+    return {
+        type: NEXTPAGE,
+        payload: {
+            first: firstPage,
+            offset: nextPage
+        }
+    }
 }
 
 export function prevPageList(firstPage, nextPage){
-	return {
-		type: PREVPAGE,
-		payload: {
-			first: firstPage,
-			offset: nextPage
-		}
-	}
+    return {
+        type: PREVPAGE,
+        payload: {
+            first: firstPage,
+            offset: nextPage
+        }
+    }
 }

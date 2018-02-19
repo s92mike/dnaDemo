@@ -2,7 +2,8 @@
         FILLEDHERO,
         REJECTHERO,
         SEARCHHERO,
-        SEARCHHEROTERM
+        SEARCHHEROTERM,
+        SELECTEDHERO
     } from '../actions'
 
 export default function render(state={
@@ -28,6 +29,8 @@ export default function render(state={
             }
             break
         case SEARCHHEROTERM:
+            return { ...state, hero: action.payload }
+        case SELECTEDHERO:
             return { ...state, hero: action.payload }
     }
     return state
