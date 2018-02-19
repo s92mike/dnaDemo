@@ -17,9 +17,9 @@ import * as heroesActions from '../actions/heroesActions'
         actions: bindActionCreators(heroesActions, dispatch)
     }
 })
-export default class App extends Component {
+class App extends Component {
     componentWillMount() {
-       this.props.actions.getHeroes()
+       this.props.getAllHeroes()
     }
     render() {
         const { heroes } = this.props
@@ -41,21 +41,18 @@ export default class App extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         heroes: state.heroes
-//     }
-// }
+const mapStateToProps = (state) => {
+    return {
+        heroes: state.heroes
+    }
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         checkTerm: (terms) => {
-//             dispatch(searchHeroes(terms, this.props.heroes))
-//         },
-//         getAllHeroes: () => {
-//             dispatch(getHeroes())
-//         }
-//     }
-// }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getAllHeroes: () => {
+            dispatch(getHeroes())
+        }
+    }
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
