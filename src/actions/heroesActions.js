@@ -2,7 +2,7 @@ import axios from "axios"
 import { 
     FILLEDHERO,
     REJECTHERO,
-    SEARCHHERO,
+    GETHERO,
     OPENAPILINK,
     SEARCHHEROTERM,
     SELECTEDHERO,
@@ -11,7 +11,7 @@ import {
 
 export function getHeroes() {
     return function (dispatch) {
-        dispatch({type: SEARCHHERO})
+        dispatch({type: GETHERO})
         axios.get(`${OPENAPILINK+OPENAPILINKAPI}/heroStats`)
             .then((response) => {
                 dispatch({ type: FILLEDHERO, payload: response.data })

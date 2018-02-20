@@ -2,10 +2,11 @@ import {
     NEXTPAGE,
     PREVPAGE,
     GETCURRENTPAGE,
-    SERCHITEMSUPDATE,
+    SEARCHITEMSUPDATE,
     UPDATETERMS,
-    SERCHITEMTERMS,
-    PAGEMAX
+    SEARCHITEMTERMS,
+    PAGEMAX,
+    SETCATTYPE
 } from './index'
 
 export function nextPageList(firstPage, nextPage){
@@ -28,27 +29,34 @@ export function prevPageList(firstPage, nextPage){
     }
 }
 
-export function updateSearchItems(items) {
+export function updateSearchItems(items=[]) {
     return {
-        type: SERCHITEMSUPDATE,
+        type: SEARCHITEMSUPDATE,
         payload: items
     }
 }
 
-export function setTerms(terms) {
+export function setTerms(terms='') {
     return { 
         type: UPDATETERMS, 
         payload: terms
     }
 }
 
-export function searchItemsTerms(terms, items = []) {
+export function searchItemsTerms(terms, items=[]) {
     return { 
-        type: SERCHITEMTERMS, 
+        type: SEARCHITEMTERMS, 
         payload: {
             terms: terms,
             searchItems: items,
             maxListStatus: PAGEMAX
         }
+    }
+}
+
+export function setCategoryType(type) {
+    return {
+        type: SETCATTYPE,
+        payload: type
     }
 }

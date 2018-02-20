@@ -1,19 +1,41 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 
-export default class Searchcategories extends Component {
+import { 
+    SELECTORS,
+    CATEGORY1,
+    CATEGORY2,
+    CATEGORY3
+} from '../actions'
+import { setCategoryType } from '../actions/statusActions'
+
+class Searchcategories extends PureComponent {
     render() {
+        const {status, updateCategory, terms} = this.props
+        const categoryLI = SELECTORS.map((category,i)=><li key={`category_LI_${i}`} className="nav-item">
+                    <a  onClick={()=>{updateCategory(category)}} 
+                        className={`nav-link${status.category==category?' active':''}`} 
+                        href="javascript:void(0)">{category}</a>
+                </li>)
         return (
             <ul className="nav nav-tabs">
-                <li className="nav-item">
-                    <a className="nav-link active" href="javascript:void(0)">Heroes</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="javascript:void(0)">Items</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="javascript:void(0)">Players</a>
-                </li>
+                {categoryLI}
             </ul>
         )        
     }
 }
+
+const mapStoreToProps = (store) => {
+    return {
+        status: store.statusR,
+    }
+}
+
+const mapDispatchToPRops = (dispatch) => {
+    return {
+        updateCategory: (type) => {
+            dispatch(setCategoryType(type))
+        }
+    }
+}
+export default connect(mapStoreToProps, mapDispatchToPRops)(Searchcategories)

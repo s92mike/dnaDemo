@@ -16,10 +16,10 @@ class Sidebar extends Component {
         
     }    
     render() {
-        const { status } = this.props
+        const { category } = this.props
         return (
             <div className="col-4 p-2 border">
-                <h4>{status} List</h4>
+                <h4>{category} List</h4>
                 <Listpagination />
                 <Pagelist />
             </div>
@@ -28,7 +28,7 @@ class Sidebar extends Component {
 }
 const mapStoreToProps = (store) => {
     return {
-        status: store.statusR.status,
+        category: store.statusR.category,
         terms: store.statusR.terms,
         heroes: store.heroR.heroes
     }

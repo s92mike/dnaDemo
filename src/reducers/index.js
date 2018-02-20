@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux'
 import heroesReducer from './heroesReducer'
-import userReducer from './userReducer'
+import playersReducer from './playersReducer'
 import statusReducer from './statusReducer'
 
 export default combineReducers({
     heroR: heroesReducer,
-    statusR: statusReducer
+    statusR: statusReducer,
+    playerR: playersReducer
 })

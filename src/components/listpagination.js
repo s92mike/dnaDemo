@@ -11,30 +11,30 @@ import { nextPageList, prevPageList } from '../actions/statusActions'
 
 class Listpagination extends Component {
     render() {
-    const { status, heroes, nextPageButtonProps, prevPageButtonProps } = this.props
-    const inActiveFirst = checkDisabled(ACTIVEFIRST, status.pageListStatus)
-    const inActiveLast = checkDisabled(ACTIVELAST, status.maxListStatus, status.searchItems.length)
-    return (
-        <nav aria-label="Page navigation justify-content-center" className="text-xs-center">
-            <ul className="pagination">
-                <li className={`page-item${inActiveFirst}`}>
-                    <a onClick={()=>{prevPageButtonProps(status.pageListStatus, status.maxListStatus)}} 
-                    className="page-link" 
-                    href="javascript:void(0)" 
-                    aria-label="Previous">
-                        PREV
-                    </a>
-                </li>
-                <li className={`page-item${inActiveLast}`}>
-                    <a onClick={()=>{nextPageButtonProps(status.pageListStatus, status.maxListStatus)}} 
-                    className="page-link" 
-                    href="javascript:void(0)" 
-                    aria-label="Next">
-                        NEXT
-                    </a>
-                </li>
-            </ul>
-        </nav>  
+        const { status, heroes, nextPageButtonProps, prevPageButtonProps } = this.props
+        const inActiveFirst = checkDisabled(ACTIVEFIRST, status.pageRangeFrom)
+        const inActiveLast = checkDisabled(ACTIVELAST, status.pageRangeTo, status.searchItems.length)
+        return (
+            <nav aria-label="Page navigation justify-content-center" className="text-xs-center">
+                <ul className="pagination">
+                    <li className={`page-item${inActiveFirst}`}>
+                        <a onClick={()=>{prevPageButtonProps(status.pageRangeFrom, status.pageRangeTo)}} 
+                        className="page-link" 
+                        href="javascript:void(0)" 
+                        aria-label="Previous">
+                            PREV
+                        </a>
+                    </li>
+                    <li className={`page-item${inActiveLast}`}>
+                        <a onClick={()=>{nextPageButtonProps(status.pageRangeFrom, status.pageRangeTo)}} 
+                        className="page-link" 
+                        href="javascript:void(0)" 
+                        aria-label="Next">
+                            NEXT
+                        </a>
+                    </li>
+                </ul>
+            </nav>  
         )
     }
 }

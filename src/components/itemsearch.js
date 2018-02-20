@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { connect }  from 'react-redux'
 
-import { searchItemsByTerms } from '../actions'
+import { 
+    searchItemsByTerms,
+    CATEGORY1,
+    CATEGORY2,
+    CATEGORY3
+} from '../actions'
 import { searchHeroes } from '../actions/heroesActions'
 import { searchItemsTerms } from '../actions/statusActions'
 

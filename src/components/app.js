@@ -5,11 +5,10 @@ import Sidebar from './sidebar'
 import Maincontainer from './maincontainer'
 
 import { getHeroes } from '../actions/heroesActions'
-import { updateSearchItems } from '../actions/statusActions'
 
 class App extends Component {
     componentWillMount() {
-       this.props.getAllHeroes()
+        this.props.getAllHeroes()
     }
     render() {
         const {heroes} = this.props
@@ -34,8 +33,7 @@ class App extends Component {
 
 const mapStoreToProps = (store) => {
     return {
-        heroes: store.heroR,
-        status: store.statusR
+        heroes: store.heroR
     }
 }
 

@@ -1,38 +1,30 @@
-import { 
-    FILLEDHERO,
-    REJECTHERO,
-    GETHERO,
-    SEARCHHEROTERM,
-    SELECTEDHERO
-} from '../actions'
-
+import {
+    GETPLAYERS,
+    REJECTEDPLAYERS,
+    FILLEDPLAYERS
+} from './'
 export default function render(state={
-    heroes: [],
+    players: [],
     fetched: false,
     fetching: false,
     error: null,
-    hero: {},
     term: ''
 }, action) {
     switch (action.type) {
-        case GETHERO:
+        case GETPLAYERS:
             return {...state, fetching: true}
             break
-        case REJECTHERO:
+        case REJECTEDPLAYERS:
             return {...state, fetching: false, error: action.payload}
             break
-        case FILLEDHERO:
+        case FILLEDPLAYERS:
             return { 
                 ...state, 
                 fetching: false, 
                 fetched: true,
-                heroes: action.payload 
+                players: action.payload               
             }
             break
-        case SEARCHHEROTERM:
-            return {...state, heroes: action.payload}
-        case SELECTEDHERO:
-            return {...state, hero: action.payload}
     }
     return state
 }
