@@ -46,7 +46,7 @@ export const checkDisabled = (conditions='',offPage='', maxItems='') => {
     }
     return ""
 }
-export const selectItemsArray = (categories, heroes, players, teams) => {
+export const selectItemsArray = (categories, heroes = [], players = [], teams = []) => {
     switch(categories) {
         case CATEGORY1:
             return {items: heroes}
@@ -59,7 +59,7 @@ export const selectItemsArray = (categories, heroes, players, teams) => {
             break
     }
     return {
-        items: new Array()
+        items: []
     }
 }
 
