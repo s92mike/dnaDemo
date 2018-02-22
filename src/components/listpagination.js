@@ -5,15 +5,27 @@ import {
     PAGEMAX, 
     ACTIVEFIRST,
     ACTIVELAST,
-    checkDisabled 
+    checkDisabled,
+    selectItemsArray
 } from '../actions'
 import { nextPageList, prevPageList } from '../actions/statusActions'
 
 class Listpagination extends Component {
     render() {
-        const { status, heroes, nextPageButtonProps, prevPageButtonProps } = this.props
+        const { 
+            status, 
+            data,
+            nextPageButtonProps, 
+            prevPageButtonProps 
+        } = this.props
+        const getCategoryMaximumItems = selectItemsArray(
+            status.category, 
+            status.searchItems, 
+            status.searchItems, 
+            status.searchItems
+        )
         const inActiveFirst = checkDisabled(ACTIVEFIRST, status.pageRangeFrom)
-        const inActiveLast = checkDisabled(ACTIVELAST, status.pageRangeTo, status.searchItems.length)
+        const inActiveLast = checkDisabled(ACTIVELAST, status.pageRangeTo, getCategoryMaximumItems.maximum)
         return (
             <nav aria-label="Page navigation justify-content-center" className="text-xs-center">
                 <ul className="pagination">
@@ -41,7 +53,7 @@ class Listpagination extends Component {
 const mapStoreToProps = (store) => {
     return {
         status: store.statusR,
-        heroes: store.heroR.heroes
+        data: store.axiosR
     }
 }
 const mapDispatchToProps = (dispatch) => {

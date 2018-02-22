@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
-import heroesReducer from './heroesReducer'
-import playersReducer from './playersReducer'
+import axiosReducer from './axiosReducer'
 import statusReducer from './statusReducer'
 
 export default combineReducers({
-    heroR: heroesReducer,
-    statusR: statusReducer,
-    playerR: playersReducer
+    axiosR: axiosReducer,
+    statusR: statusReducer
 })

@@ -1,5 +1,5 @@
 .border {
-	border: 1px solid #000;
+	border: 1px solid #040018;
 }
 
 .container.v1 {
@@ -14,4 +14,19 @@
 .search-bar input{
   width:75%;
   padding: 0px 6px;
+}
+
+.list-group-item.dark img {
+	background-color: #212529;
+}
+.list-group-item img {	
+	margin: 0 15px;
+}
+.card-title {
+	padding: 6px;
+}
+@media (max-width: 768px) { 
+	.list-group-item {
+		text-align: center;
+	}
 }

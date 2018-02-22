@@ -3,38 +3,48 @@ import { connect } from 'react-redux'
 
 import { 
     OPENAPILINK,
-    selectItemsArray
+    DOTAICON,
+    CATEGORY1,
+    CATEGORY2,
+    selectItemsArray,
+    preDefinedMessage
 } from '../actions'
-import { selectHeroes } from '../actions/heroesActions'
-import { searchItemsTerms } from '../actions/statusActions'
-import { getPlayers } from '../actions/playerActions'
+import { setStatusItem } from '../actions/statusActions'
+import { setStatusItemByAccount } from '../actions/axiosActions'
 
 class Pagelist extends Component {    
+    setImgToDefault(event) {
+        event.target.src=DOTAICON
+    }
     render() {
         const { 
-            heroes, 
+            data, 
             status, 
-            selectedItem, 
-            setItemProps,
-            heroErr,
-            players
+            error,
+            setItemProps
         } = this.props
-        const displayArray = selectItemsArray(status.category, status.searchItems, players)
-        const listItems = displayArray.items.slice(status.pageRangeFrom, status.pageRangeTo)
-            .map( item => <li onClick={()=>{setItemProps(item)}} 
-                    style={{cursor: 'pointer'}} 
-                    className={`list-group-item${item.id==selectedItem.id?' active':''}`} 
-                    key={item.id} >
-                        <img src={`${OPENAPILINK+item.icon}`} /> {item.localized_name}
-                </li>)
-        if(!listItems.length){
+        const displayArray = selectItemsArray(
+            status.category, 
+            status.searchItems, 
+            status.searchItems, 
+            status.searchItems
+        )
+        console.log(displayArray)
+        if(!displayArray.items.length){
+            const errorMessage = preDefinedMessage(status.category)
             return (
                 <div className="alert alert-danger">
-                    <strong>Denied!!!</strong> You Got Nothing!!!
-                    {heroErr}
+                    <strong>{errorMessage.first}</strong> {errorMessage.second}
                 </div>)
 
         }
+        const listItems = displayArray.items.slice(status.pageRangeFrom, status.pageRangeTo)
+            .map( item => <li onClick={()=>{setItemProps(item, status.category)}} 
+                style={{cursor: 'pointer'}} 
+                className={`list-group-item${status.category!=CATEGORY1?' dark':''}${item.display_id==status.item.display_id?' active':''}`} 
+                key={item.display_id} >
+                    <img onError={this.setImgToDefault} style={{width: 30, height: 'auto'}} src={`${item.display_icon}`} /><p className="navbar-text">{item.display_name}</p>
+            </li>)
         return (
             <ul className="list-group" style={{padding: 6}}>
                 {listItems}
@@ -44,20 +54,18 @@ class Pagelist extends Component {
 }
 const mapStoreToProps = (store) => {
     return {
-        heroes: store.heroR.heroes,
-        heroErr: store.heroR.error,
-        status: store.statusR,
-        selectedItem: store.heroR.hero,
-        players: store.playerR.players
+        data: store.axiosR,
+        error: store.axiosR.error,
+        status: store.statusR
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        setItemProps: (subject) => {
-            dispatch(selectHeroes(subject))
-        },
-        setPlayersProps: () => {
-            dispatch(getPlayers())
+        setItemProps: (item, category) => {
+            if(category==CATEGORY2)
+                dispatch(setStatusItemByAccount(item))
+            else
+                dispatch(setStatusItem(item))
         }
     }
 }

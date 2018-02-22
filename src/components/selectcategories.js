@@ -5,15 +5,21 @@ import {
     SELECTORS,
     CATEGORY1,
     CATEGORY2,
-    CATEGORY3
+    CATEGORY3,
+    selectItemsArray
 } from '../actions'
-import { setCategoryType } from '../actions/statusActions'
+import { setCategoryAndItems } from '../actions/statusActions'
+import { getPlayers } from '../actions/axiosActions'
 
-class Searchcategories extends PureComponent {
+class Selectcategories extends PureComponent {
     render() {
-        const {status, updateCategory, terms} = this.props
+        const {
+            status,
+            data,
+            updateCategoryAndSelectedItems 
+        } = this.props
         const categoryLI = SELECTORS.map((category,i)=><li key={`category_LI_${i}`} className="nav-item">
-                    <a  onClick={()=>{updateCategory(category)}} 
+                    <a  onClick={()=>{updateCategoryAndSelectedItems(category, selectItemsArray(category,data.heroes,data.players,data.teams).items)}} 
                         className={`nav-link${status.category==category?' active':''}`} 
                         href="javascript:void(0)">{category}</a>
                 </li>)
@@ -28,14 +34,15 @@ class Searchcategories extends PureComponent {
 const mapStoreToProps = (store) => {
     return {
         status: store.statusR,
+        data: store.axiosR
     }
 }
 
 const mapDispatchToPRops = (dispatch) => {
     return {
-        updateCategory: (type) => {
-            dispatch(setCategoryType(type))
+        updateCategoryAndSelectedItems: (type, items) => {
+            dispatch(setCategoryAndItems(type,items))
         }
     }
 }
-export default connect(mapStoreToProps, mapDispatchToPRops)(Searchcategories)
+export default connect(mapStoreToProps, mapDispatchToPRops)(Selectcategories)

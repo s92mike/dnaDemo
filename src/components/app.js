@@ -4,19 +4,22 @@ import { connect } from 'react-redux'
 import Sidebar from './sidebar'
 import Maincontainer from './maincontainer'
 
-import { getHeroes } from '../actions/heroesActions'
+import { getAllInitialData, getAllInitialDataNoAxios } from '../actions/axiosActions'
 
 class App extends Component {
     componentWillMount() {
-        this.props.getAllHeroes()
+        this.props.getAllInitializedData()
+        //this.props.getDemoData()
     }
     render() {
-        const {heroes} = this.props
-        if(!heroes.heroes.length){
+        const {data} = this.props
+        if(!data.heroes.length){
             return (
-                <div className="text-center" 
-                    style={{paddingTop: 18}}>
-                    <h1>Loading!!!</h1>
+                <div
+                className="text-center alert alert-info" 
+                role="alert"
+                style={{paddingTop: 18, marginTop: '21%'}}>
+                    <h3>Loading!!!</h3>
                 </div>
             )
         }
@@ -33,14 +36,17 @@ class App extends Component {
 
 const mapStoreToProps = (store) => {
     return {
-        heroes: store.heroR
+        data: store.axiosR
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getAllHeroes: () => {
-            dispatch(getHeroes())
+        getAllInitializedData: () => {
+            dispatch(getAllInitialData())
+        },
+        getDemoData: () => {
+            dispatch(getAllInitialDataNoAxios())
         }
     }
 }

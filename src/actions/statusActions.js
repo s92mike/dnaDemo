@@ -6,25 +6,26 @@ import {
     UPDATETERMS,
     SEARCHITEMTERMS,
     PAGEMAX,
-    SETCATTYPE
+    SETCATTYPE,
+    SETITEM
 } from './index'
 
-export function nextPageList(firstPage, nextPage){
+export function nextPageList(firstPage=0, offPage=PAGEMAX){
     return {
         type: NEXTPAGE,
         payload: {
             first: firstPage,
-            offset: nextPage
+            offset: offPage
         }
     }
 }
 
-export function prevPageList(firstPage, nextPage){
+export function prevPageList(firstPage=0, offPage=PAGEMAX){
     return {
         type: PREVPAGE,
         payload: {
             first: firstPage,
-            offset: nextPage
+            offset: offPage
         }
     }
 }
@@ -43,7 +44,7 @@ export function setTerms(terms='') {
     }
 }
 
-export function searchItemsTerms(terms, items=[]) {
+export function searchItemsTerms(terms="", items=[]) {
     return { 
         type: SEARCHITEMTERMS, 
         payload: {
@@ -54,9 +55,19 @@ export function searchItemsTerms(terms, items=[]) {
     }
 }
 
-export function setCategoryType(type) {
+export function setCategoryAndItems(type="", items=[]) {
     return {
         type: SETCATTYPE,
-        payload: type
+        payload: {
+            category: type,
+            searchItems: items
+        }
+    }
+}
+
+export function setStatusItem(item=[]) {
+    return {
+        type: SETITEM,
+        payload: item
     }
 }

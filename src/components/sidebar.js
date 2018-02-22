@@ -4,17 +4,9 @@ import { connect } from 'react-redux'
 import Pagelist from './pagelist'
 import Listpagination from './listpagination'
 import { searchItemsByTerms } from '../actions'
-import { updateSearchItems, searchItemsTerms } from '../actions/statusActions'
+import { updateSearchItems, searchItemsTerms, setStatusItem } from '../actions/statusActions'
 
-class Sidebar extends Component {
-    componentWillMount() {
-        if(this.props.terms.length){
-            this.props.setSearchItemProps(this.props.terms, searchItemsByTerms(this.props.terms, this.props.heroes))
-        } else {
-            this.props.setSearchInitialItems(this.props.heroes)
-        }
-        
-    }    
+class Sidebar extends Component { 
     render() {
         const { category } = this.props
         return (
@@ -28,19 +20,7 @@ class Sidebar extends Component {
 }
 const mapStoreToProps = (store) => {
     return {
-        category: store.statusR.category,
-        terms: store.statusR.terms,
-        heroes: store.heroR.heroes
+        category: store.statusR.category
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setSearchItemProps: (terms, items) => {
-            dispatch(searchItemsTerms(terms, items))
-        },
-        setSearchInitialItems: (items) => {
-            dispatch(updateSearchItems(items))
-        }
-    }
-}
-export default connect(mapStoreToProps, mapDispatchToProps)(Sidebar)
+export default connect(mapStoreToProps)(Sidebar)

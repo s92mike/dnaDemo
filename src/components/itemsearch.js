@@ -1,23 +1,39 @@
 import React, { Component } from 'react'
 import { connect }  from 'react-redux'
+import axios from 'axios'
+import _ from 'lodash'
 
 import { 
     searchItemsByTerms,
+    selectItemsArray,
     CATEGORY1,
     CATEGORY2,
     CATEGORY3
 } from '../actions'
-import { searchHeroes } from '../actions/heroesActions'
-import { searchItemsTerms } from '../actions/statusActions'
+import { searchItemsTerms, setTerms } from '../actions/statusActions'
+import { searchPlayer, setFetcing } from '../actions/axiosActions'
 
 class Itemsearch extends Component {
-    render() {
-        const {status, searchItemsTermsProps, heroes} = this.props
+    render() {     
+        const {status, searchItemsTermsProps, data} = this.props
+        const selectedArray = selectItemsArray(
+            status.category, 
+            data.heroes, 
+            data.players, 
+            data.teams
+        )
         return (
             <div className='search-bar'>
                 <input 
                     value={status.terms}
-                    onChange={(term)=>{searchItemsTermsProps(term.target.value, heroes)}}
+                    onChange={(term)=>{searchItemsTermsProps(
+                        status.category, 
+                        term.target.value, 
+                        selectedArray.items, 
+                        data.axiosSource, 
+                        data.fetching,
+                        data.players
+                    )}}
                     className="rounded" />
             </div>
         )
@@ -28,14 +44,27 @@ class Itemsearch extends Component {
 const mapStoreToProps = (store) => {
     return {
         status: store.statusR,
-        heroes: store.heroR.heroes
+        data: store.axiosR
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {  
-        searchItemsTermsProps: (terms, items) => {
-            dispatch(searchItemsTerms(terms, searchItemsByTerms(terms, items)))
+        searchItemsTermsProps: (category, terms, items, source, fetching, players) => {
+            if(category == CATEGORY2 && terms.length){
+                dispatch(setTerms(terms))
+                if(fetching){
+                    source.cancel('fetching') 
+                    const newCancelTokenAxios = axios.CancelToken
+                    const newSource = newCancelTokenAxios.source()
+                    dispatch(searchPlayer(terms, newSource))
+                } else{
+                    dispatch(searchPlayer(terms, source))
+                } 
+            } else{
+                if(category==CATEGORY2) source.cancel('blank terms')
+                dispatch(searchItemsTerms(terms, searchItemsByTerms(terms, items)))
+            }
         }
     }
 }
