@@ -23,78 +23,62 @@ import {
     FILLEDPLAYERBYID
 } from '../actions'
 
-export default function render(state={
+export default (state={
     heroes: [],
     players: [],
     teams: [],
     fetching: false,
     error: null,
     axiosSource: null
-}, action) {
+}, action) => {
     switch (action.type) {
         case SEARCHHEROTERM:
-            return {...state, heroes: action.payload}
-            break
+            return {...state, heroes: action.payload}            
         case SELECTEDHERO:
-            return {...state, hero: action.payload}
-            break
+            return {...state, hero: action.payload}            
         case GETHERO:
-            return {...state, fetching: true}
-            break
+            return {...state, fetching: true}            
         case REJECTHERO:
-            return {...state, fetching: false, error: action.payload}
-            break
+            return {...state, fetching: false, error: action.payload}            
         case FILLEDHERO:
             return { 
                 ...state, 
                 fetching: false, 
                 heroes: action.payload 
-            }
-            break
+            }            
         case GETPLAYERS:
-            return {...state, fetching: true}
-            break
+            return {...state, fetching: true}            
         case REJECTEDPLAYERS:
-            return {...state, fetching: false, error: action.payload}
-            break
+            return {...state, fetching: false, error: action.payload}            
         case FILLEDPLAYERS:
             return { 
                 ...state, 
                 fetching: false, 
                 players: action.payload               
-            }
-            break
+            }            
         case GETTEAMS:
-            return {...state, fetching: true}
-            break
+            return {...state, fetching: true}            
         case REJECTEDTEAMS:
             return {...state, fetching: false, error: action.payload}
-            break
         case FILLEDTEAMS:
             return { 
                 ...state, 
                 fetching: false, 
                 teams: action.payload               
             }
-            break
         case SEARCHPLAYERTERM:
             return {...state, fetching: true}
-            break
         case REJECTEDSEARCHPLAYERTERM:
             return {...state, error: action.payload}
-            break
         case FILLEDSEARCHPLAYERTERM:
             return { 
                 ...state, 
                 fetching: false,               
             }
-            break 
         case GETALLINITIALIZEDDATA:
             return {...state, fetching: true}
-            break
         case REJECTEDINITIALIZEDDATA:
             return {...state, fetching: false, error: action.payload}
-            break
         case FILLEDINITIALIZEDDATA:
             return { 
                 ...state, 
@@ -104,22 +88,17 @@ export default function render(state={
                 teams: action.payload.teams,
                 axiosSource: action.payload.axiosSource             
             }
-            break
         case GETPLAYERBYID:
             return {...state, fetching: true}
-            break
         case REJECTEDPLAYERBYID:
             return {...state, fetching: false, error: action.payload}
-            break
         case FILLEDPLAYERBYID:
             return { 
                 ...state, 
                 fetching: false           
             }
-            break
         case SETFETCHING:
             return {...state, fetching: false}
-            break
         case UPDATEAXIOSSOURCE:
             return {...state, axiosSource: action.payload}
     }

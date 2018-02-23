@@ -13,14 +13,14 @@ import {
     FILLEDPLAYERBYIDSTATUS,
     UPDATEITEMSEARCH
 } from '../actions'
-export default function render(state={
+export default (state={
     category: "Heroes",
     pageRangeFrom: 0,
     pageRangeTo: PAGEMAX,
     terms: '',
     searchItems: [],
     item: {}
-}, action) {
+}, action) => {
     const { type, payload } = action
     switch (type) {
         case SETITEM:

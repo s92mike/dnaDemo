@@ -8,8 +8,8 @@ import { getAllInitialData, getAllInitialDataNoAxios } from '../actions/axiosAct
 
 class App extends Component {
     componentWillMount() {
-        this.props.getAllInitializedData()
-        //this.props.getDemoData()
+        //this.props.getAllInitializedData()
+        this.props.getDemoData()
     }
     render() {
         const {data} = this.props
