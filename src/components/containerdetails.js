@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { OPENAPILINK, checkObjectEmpty, DOTAICON } from '../actions'
+import { checkObjectEmpty, DOTAICON } from '../actions'
 
 class ContainerDetails extends Component {
     setImgToDefault(event) {

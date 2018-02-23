@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { 
-    PAGEMAX, 
     ACTIVEFIRST,
     ACTIVELAST,
-    checkDisabled,
-    selectItemsArray
+    checkDisabled
 } from '../actions'
 import { nextPageList, prevPageList } from '../actions/statusActions'
 
@@ -14,18 +12,11 @@ class Listpagination extends Component {
     render() {
         const { 
             status, 
-            data,
             nextPageButtonProps, 
             prevPageButtonProps 
         } = this.props
-        const getCategoryMaximumItems = selectItemsArray(
-            status.category, 
-            status.searchItems, 
-            status.searchItems, 
-            status.searchItems
-        )
         const inActiveFirst = checkDisabled(ACTIVEFIRST, status.pageRangeFrom)
-        const inActiveLast = checkDisabled(ACTIVELAST, status.pageRangeTo, getCategoryMaximumItems.maximum)
+        const inActiveLast = checkDisabled(ACTIVELAST, status.pageRangeTo, status.searchItems.length)
         return (
             <nav aria-label="Page navigation justify-content-center" className="text-xs-center">
                 <ul className="pagination">
@@ -52,8 +43,7 @@ class Listpagination extends Component {
 }
 const mapStoreToProps = (store) => {
     return {
-        status: store.statusR,
-        data: store.axiosR
+        status: store.statusR
     }
 }
 const mapDispatchToProps = (dispatch) => {

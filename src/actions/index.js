@@ -2,7 +2,7 @@ import React from 'react'
 
 export const PAGEMAX = 6
 export const GAMEPLAYERROLES = ['No Position','Carry','Mid','Offlane', 'Roaming Support', 'Support']
-export const SELECTORS = ["Heroes", "Players", "Teams"]
+export const SELECTORS = ["Heroes", "Teams", "Players"]
 export const CATEGORY1 = "Heroes"
 export const CATEGORY2 = "Players"
 export const CATEGORY3 = "Teams"
@@ -68,8 +68,8 @@ export const preDefinedMessage = (category=CATEGORY1) => {
             break
         case CATEGORY2:
             return {
-                first: 'Searching...',
-                second: 'Please wait...'
+                first: 'Search again...',
+                second: 'Or wait...'
             }
             break
         case CATEGORY3:

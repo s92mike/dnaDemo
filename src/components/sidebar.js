@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 
 import Pagelist from './pagelist'
 import Listpagination from './listpagination'
-import { searchItemsByTerms } from '../actions'
-import { updateSearchItems, searchItemsTerms, setStatusItem } from '../actions/statusActions'
 
 class Sidebar extends Component { 
     render() {

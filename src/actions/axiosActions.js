@@ -156,7 +156,6 @@ export function setStatusItemByAccount(player) {
         axios.get(`${OPENAPILINK+OPENAPILINKAPI}/players/${player.display_id}`)
         .then((response) => {
             const newArray = updatePlayerArray(player, response.data)
-            console.log(newArray)
             dispatch({type: FILLEDPLAYERBYID})
             dispatch({type: FILLEDPLAYERBYIDSTATUS, payload: newArray})
         })

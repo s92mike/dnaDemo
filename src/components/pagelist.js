@@ -20,17 +20,10 @@ class Pagelist extends Component {
         const { 
             data, 
             status, 
-            error,
             setItemProps
         } = this.props
-        const displayArray = selectItemsArray(
-            status.category, 
-            status.searchItems, 
-            status.searchItems, 
-            status.searchItems
-        )
-        console.log(displayArray)
-        if(!displayArray.items.length){
+        const selectedDisplay = selectItemsArray(status.category, status.searchItems, status.searchItems, status.searchItems)
+        if(!selectedDisplay.items.length){
             const errorMessage = preDefinedMessage(status.category)
             return (
                 <div className="alert alert-danger">
@@ -38,7 +31,7 @@ class Pagelist extends Component {
                 </div>)
 
         }
-        const listItems = displayArray.items.slice(status.pageRangeFrom, status.pageRangeTo)
+        const listItems = selectedDisplay.items.slice(status.pageRangeFrom, status.pageRangeTo)
             .map( item => <li onClick={()=>{setItemProps(item, status.category)}} 
                 style={{cursor: 'pointer'}} 
                 className={`list-group-item${status.category!=CATEGORY1?' dark':''}${item.display_id==status.item.display_id?' active':''}`} 
@@ -55,7 +48,6 @@ class Pagelist extends Component {
 const mapStoreToProps = (store) => {
     return {
         data: store.axiosR,
-        error: store.axiosR.error,
         status: store.statusR
     }
 }

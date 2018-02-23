@@ -1,19 +1,16 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect }  from 'react-redux'
 import axios from 'axios'
-import _ from 'lodash'
 
 import { 
     searchItemsByTerms,
     selectItemsArray,
-    CATEGORY1,
-    CATEGORY2,
-    CATEGORY3
+    CATEGORY2
 } from '../actions'
 import { searchItemsTerms, setTerms } from '../actions/statusActions'
-import { searchPlayer, setFetcing } from '../actions/axiosActions'
+import { searchPlayer } from '../actions/axiosActions'
 
-class Itemsearch extends Component {
+class Itemsearch extends PureComponent {
     render() {     
         const {status, searchItemsTermsProps, data} = this.props
         const selectedArray = selectItemsArray(

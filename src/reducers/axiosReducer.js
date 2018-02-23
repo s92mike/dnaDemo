@@ -29,8 +29,7 @@ export default function render(state={
     teams: [],
     fetching: false,
     error: null,
-    axiosSource: null,
-    axiosCancelToken: null
+    axiosSource: null
 }, action) {
     switch (action.type) {
         case SEARCHHEROTERM:
