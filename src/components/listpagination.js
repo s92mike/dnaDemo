@@ -23,16 +23,14 @@ class Listpagination extends Component {
                     <li className={`page-item${inActiveFirst}`}>
                         <a onClick={()=>{prevPageButtonProps(status.pageRangeFrom, status.pageRangeTo)}} 
                         className="page-link" 
-                        href="javascript:void(0)" 
-                        aria-label="Previous">
+                        href="javascript:void(0)">
                             PREV
                         </a>
                     </li>
                     <li className={`page-item${inActiveLast}`}>
                         <a onClick={()=>{nextPageButtonProps(status.pageRangeFrom, status.pageRangeTo)}} 
                         className="page-link" 
-                        href="javascript:void(0)" 
-                        aria-label="Next">
+                        href="javascript:void(0)">
                             NEXT
                         </a>
                     </li>

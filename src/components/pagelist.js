@@ -34,7 +34,7 @@ class Pagelist extends Component {
         const listItems = selectedDisplay.items.slice(status.pageRangeFrom, status.pageRangeTo)
             .map( item => <li onClick={()=>{setItemProps(item, status.category)}} 
                 style={{cursor: 'pointer'}} 
-                className={`list-group-item${status.category!=CATEGORY1?' dark':''}${item.display_id==status.item.display_id?' active':''}`} 
+                className={`list-group-item${item.display_id==status.item.display_id?' active':''}`} 
                 key={item.display_id} >
                     <img onError={this.setImgToDefault} style={{width: 30, height: 'auto'}} src={`${item.display_icon}`} /><p className="navbar-text">{item.display_name}</p>
             </li>)

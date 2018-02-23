@@ -48,7 +48,7 @@ const CancelTokenAxios = axios.CancelToken
 const sourceAxios = CancelTokenAxios.source();
 
 export function getAllInitialDataNoAxios() {
-    return function(dispatch){
+    return function(dispatch){ //thunk middleware
         dispatch({
             type: FILLEDINITIALIZEDDATA, 
             payload: { 

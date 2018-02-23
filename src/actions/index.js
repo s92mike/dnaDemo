@@ -65,32 +65,32 @@ export const preDefinedMessage = (category=CATEGORY1) => {
                 first: 'Denied!!!',
                 second: 'You Got Nothing'
             }
-            break
+            
         case CATEGORY2:
             return {
                 first: 'Search again...',
                 second: 'Or wait...'
             }
-            break
+            
         case CATEGORY3:
             return {
                 first: 'Try again!!!!',
                 second: 'You Still Got Nothing...'
             }
-            break                        
+                                    
         default:
             return {first: 'preDefinedMessage!!!!', second: 'No category selected!!!!'}
-            break
+            
     }
 }
 export const checkDisabled = (conditions='',offPage='', maxItems='') => {
     switch(conditions){
         case ACTIVEFIRST:
             return !offPage?" disabled":""
-            break
+            
         case ACTIVELAST: 
             return offPage>=maxItems?" disabled":""
-            break
+            
     }
     return ""
 }
@@ -111,7 +111,7 @@ export const selectItemsArray = (categories=CATEGORY1, heroes = [], players = []
                 })),
                 maximum: heroes.length
             }
-            break
+            
         case CATEGORY2:
             return {
                 items: players.filter(player=>player.steamid!==null).map(player=>Object.assign(player,{
@@ -128,7 +128,7 @@ export const selectItemsArray = (categories=CATEGORY1, heroes = [], players = []
                 })),
                 maximum: players.length
             }
-            break
+            
         case CATEGORY3:
             return {
                 items: teams.map(team=>Object.assign(team, {
@@ -144,7 +144,7 @@ export const selectItemsArray = (categories=CATEGORY1, heroes = [], players = []
                 })),
                 maximum: teams.length
             }
-            break
+            
         default:
             return {
                 items: [],

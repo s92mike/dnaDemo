@@ -25,24 +25,24 @@ export default (state={
     switch (type) {
         case SETITEM:
             return {...state, item: payload}
-            break         
+                     
         case UPDATETERMS:
             return {...state, terms: payload}
-            break
+            
         case SEARCHITEMSUPDATE:
             return {...state, searchItems: payload}
-            break
+            
         case FILLEDSEARCHPLAYERTERMSTATUS:
             return {...state, searchItems: payload}
         case GETCURRENTPAGE:
             return {...state, pageRangeFrom: payload.first, pageRangeTo: payload.offset}
-            break
+            
         case NEXTPAGE:
             return {...state, pageRangeFrom: payload.first+PAGEMAX, pageRangeTo: payload.offset+PAGEMAX}
-            break
+            
         case PREVPAGE:
             return {...state, pageRangeFrom: payload.first-PAGEMAX, pageRangeTo: payload.offset-PAGEMAX}
-            break     
+                 
         case SETSELECTEDITEMS:
             return {...state, item: payload[0], searchItems: payload}
         case FILLEDPLAYERBYIDSTATUS:
@@ -57,7 +57,7 @@ export default (state={
                 pageRangeFrom: 0,
                 pageRangeTo: payload.maxListStatus
             }
-            break
+            
         case SETCATTYPE:
             return {
                 ...state, 
@@ -68,7 +68,7 @@ export default (state={
                 pageRangeTo: PAGEMAX,
                 searchItems: payload.searchItems
             } 
-            break      
+                  
     }
     return state
 }

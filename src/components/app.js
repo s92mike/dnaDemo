@@ -17,7 +17,6 @@ class App extends Component {
             return (
                 <div
                 className="text-center alert alert-info" 
-                role="alert"
                 style={{paddingTop: 18, marginTop: '21%'}}>
                     <h3>Loading!!!</h3>
                 </div>
