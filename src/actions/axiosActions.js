@@ -1,41 +1,41 @@
 import axios from "axios"
 import { 
     updatePlayerArray,
-    FILLEDHERO,
-    REJECTHERO,
-    GETHERO,
-    OPENAPILINK,
-    SEARCHHEROTERM,
-    SELECTEDHERO,
-    OPENAPILINKAPI,
-    OPENAPILINKTEAMTL,
-    OPENAPILINKTEAM,
-    OPENAPILINKPLAYERS,
+    FILLED_HERO,
+    REJECT_HERO,
+    GET_HERO,
+    OPEN_DOTA_API_LINK,
+    SEARCH_HERO_TERM,
+    SELECTED_HERO,
+    OPEN_DOTA_API_LINK_API,
+    OPEN_DOTA_API_LINK_TEAM_TL,
+    OPEN_DOTA_API_LINK_TEAM,
+    OPEN_DOTA_API_LINK_PLAYERS,
     REJECTEDPLAYERS,
-    FILLEDPLAYERS,
-    GETPLAYERS,
-    GETTEAMS,
-    FILLEDTEAMS,
+    FILLED_PLAYERS,
+    GET_PLAYERS,
+    GET_TEAMS,
+    FILLED_TEAMS,
     REJECTEDTEAMS,
-    SEARCHPLAYERTERM,
-    FILLEDSEARCHPLAYERTERM,
-    REJECTEDSEARCHPLAYERTERM,
-    GETALLINITIALIZEDDATA,
-    FILLEDINITIALIZEDDATA,
-    REJECTEDINITIALIZEDDATA,
-    SETSELECTEDITEMS,
-    SEARCHITEMSUPDATE,
-    SETITEM,
-    UPDATETERMS,
-    SETFETCHING,
-    UPDATEAXIOSSOURCE,
-    FILLEDSEARCHPLAYERTERMSTATUS,
+    SEARCH_PLAYER_TERM,
+    FILLED_SEARCH_PLAYER_TERM,
+    REJECTED_SEARCH_PLAYER_TERM,
+    GET_ALL_INITIALIZED_DATA,
+    FILLED_INITIALIZED_DATA,
+    REJECTED_INITIALIZED_DATA,
+    SET_SELECTED_ITEMS,
+    SEARCH_ITEMS_UPDATE,
+    SET_ITEM,
+    UPDATE_TERMS,
+    SET_FETCHING,
+    UPDATE_AXIOS_SOURCE,
+    FILLED_SEARCH_PLAYER_TERM_STATUS,
     SETOTHERPLAYERDATAAXIOS,
-    GETPLAYERBYID,
-    REJECTEDPLAYERBYID,
-    FILLEDPLAYERBYID,
-    FILLEDPLAYERBYIDSTATUS,
-    UPDATEITEMSEARCH
+    GET_PLAYER_BY_ID,
+    REJECTED_PLAYER_BY_ID,
+    FILLED_PLAYER_BY_ID,
+    FILLED_PLAYER_BY_ID_STATUS,
+    UPDATE_ITEM_SEARCH
 } from './index'
 
 import {
@@ -50,7 +50,7 @@ const sourceAxios = CancelTokenAxios.source();
 export function getAllInitialDataNoAxios() {
     return function(dispatch){ //thunk middleware
         dispatch({
-            type: FILLEDINITIALIZEDDATA, 
+            type: FILLED_INITIALIZED_DATA, 
             payload: { 
                 heroes: heroesData, 
                 players: playersData, 
@@ -59,7 +59,7 @@ export function getAllInitialDataNoAxios() {
             }
         })
         dispatch({
-            type: SETSELECTEDITEMS,
+            type: SET_SELECTED_ITEMS,
             payload: heroesData
         })
     }
@@ -67,14 +67,14 @@ export function getAllInitialDataNoAxios() {
 
 export function getAllInitialData() {
     return function (dispatch) {
-        dispatch({type: GETALLINITIALIZEDDATA})
-        const heroes = () => { return axios.get(`${OPENAPILINK+OPENAPILINKAPI}/heroStats`) }
-        const players = () => { return axios.get(`${OPENAPILINK+OPENAPILINKAPI}/proPlayers`) }
-        const teams = () => { return axios.get(`${OPENAPILINK+OPENAPILINKAPI}/teams`) }
+        dispatch({type: GET_ALL_INITIALIZED_DATA})
+        const heroes = () => { return axios.get(`${OPEN_DOTA_API_LINK+OPEN_DOTA_API_LINK_API}/heroStats`) }
+        const players = () => { return axios.get(`${OPEN_DOTA_API_LINK+OPEN_DOTA_API_LINK_API}/proPlayers`) }
+        const teams = () => { return axios.get(`${OPEN_DOTA_API_LINK+OPEN_DOTA_API_LINK_API}/teams`) }
         axios.all([heroes(), players(), teams()])
         .then(axios.spread(function (heroes, players, teams) {
             dispatch({
-                type: FILLEDINITIALIZEDDATA, 
+                type: FILLED_INITIALIZED_DATA, 
                 payload: { 
                     heroes: heroes.data, 
                     players: players.data, 
@@ -83,35 +83,35 @@ export function getAllInitialData() {
                 }
             })
             dispatch({
-                type: SETSELECTEDITEMS,
+                type: SET_SELECTED_ITEMS,
                 payload: heroes.data
             })          
         }))
         .catch((err) => {
-            dispatch({type: REJECTEDINITIALIZEDDATA, payload: err})
+            dispatch({type: REJECTED_INITIALIZED_DATA, payload: err})
         })        
     }
 }
 
 export function getHeroes() {
     return function (dispatch) {
-        dispatch({type: GETHERO})
-        axios.get(`${OPENAPILINK+OPENAPILINKAPI}/heroStats`)
+        dispatch({type: GET_HERO})
+        axios.get(`${OPEN_DOTA_API_LINK+OPEN_DOTA_API_LINK_API}/heroStats`)
             .then((response) => {
-                dispatch({type: FILLEDHERO, payload: response.data})
+                dispatch({type: FILLED_HERO, payload: response.data})
             })
             .catch((err) => {
-                dispatch({type: REJECTHERO, payload: err})
+                dispatch({type: REJECT_HERO, payload: err})
             })
     }
 }
 
 export function getPlayers() {
     return function (dispatch) {
-        dispatch({type: GETPLAYERS})
-        axios.get(`${OPENAPILINK+OPENAPILINKAPI}/proPlayers`)
+        dispatch({type: GET_PLAYERS})
+        axios.get(`${OPEN_DOTA_API_LINK+OPEN_DOTA_API_LINK_API}/proPlayers`)
         .then((response) => {
-            dispatch({type: FILLEDPLAYERS, payload: response.data})
+            dispatch({type: FILLED_PLAYERS, payload: response.data})
         })
         .catch((err) => {
             dispatch({type: REJECTEDPLAYERS, payload: err})
@@ -121,28 +121,28 @@ export function getPlayers() {
 
 export function searchPlayer(term, source) {   
     return function (dispatch) {
-        dispatch({type: UPDATEITEMSEARCH})
-        dispatch({type: UPDATEAXIOSSOURCE, payload: source})
-        dispatch({type: SEARCHPLAYERTERM})    
-        axios.get(`${OPENAPILINK+OPENAPILINKAPI}/search?q=${term}`,{
+        dispatch({type: UPDATE_ITEM_SEARCH})
+        dispatch({type: UPDATE_AXIOS_SOURCE, payload: source})
+        dispatch({type: SEARCH_PLAYER_TERM})    
+        axios.get(`${OPEN_DOTA_API_LINK+OPEN_DOTA_API_LINK_API}/search?q=${term}`,{
             cancelToken: source.token
         })
         .then((response)=>{
-            dispatch({type: FILLEDSEARCHPLAYERTERM})
-            dispatch({type: FILLEDSEARCHPLAYERTERMSTATUS, payload: response.data})
+            dispatch({type: FILLED_SEARCH_PLAYER_TERM})
+            dispatch({type: FILLED_SEARCH_PLAYER_TERM_STATUS, payload: response.data})
         })
         .catch((err)=>{
-            dispatch({type: REJECTEDSEARCHPLAYERTERM, payload: err})
+            dispatch({type: REJECTED_SEARCH_PLAYER_TERM, payload: err})
         })
     }
 }
 
 export function getTeams() {
     return function (dispatch) {
-        dispatch({type: GETTEAMS})
-        axios.get(`${OPENAPILINK+OPENAPILINKAPI}/teams`)
+        dispatch({type: GET_TEAMS})
+        axios.get(`${OPEN_DOTA_API_LINK+OPEN_DOTA_API_LINK_API}/teams`)
         .then((response) => {
-            dispatch({type: FILLEDTEAMS, payload: response.data})
+            dispatch({type: FILLED_TEAMS, payload: response.data})
         })
         .catch((err) => {
             dispatch({type: REJECTEDTEAMS, payload: err})
@@ -152,15 +152,15 @@ export function getTeams() {
 
 export function setStatusItemByAccount(player) {
     return function (dispatch) {
-        dispatch({type: GETPLAYERBYID})
-        axios.get(`${OPENAPILINK+OPENAPILINKAPI}/players/${player.display_id}`)
+        dispatch({type: GET_PLAYER_BY_ID})
+        axios.get(`${OPEN_DOTA_API_LINK+OPEN_DOTA_API_LINK_API}/players/${player.display_id}`)
         .then((response) => {
             const newArray = updatePlayerArray(player, response.data)
-            dispatch({type: FILLEDPLAYERBYID})
-            dispatch({type: FILLEDPLAYERBYIDSTATUS, payload: newArray})
+            dispatch({type: FILLED_PLAYER_BY_ID})
+            dispatch({type: FILLED_PLAYER_BY_ID_STATUS, payload: newArray})
         })
         .catch((err) => {
-            dispatch({type: REJECTEDPLAYERBYID, payload: err})
+            dispatch({type: REJECTED_PLAYER_BY_ID, payload: err})
         })
     }
 }

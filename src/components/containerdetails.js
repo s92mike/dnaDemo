@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { checkObjectEmpty, DOTAICON } from '../actions'
+import { checkObjectEmpty, DOTA_ICON } from '../actions'
 
 class ContainerDetails extends Component {
     setImgToDefault(event) {
-        event.target.src=DOTAICON
+        event.target.src=DOTA_ICON
     }
     render() {
         const { selected } = this.props  
@@ -32,9 +32,9 @@ class ContainerDetails extends Component {
     }
 }
 
-const mapStoreToProps = (store) => {
+const mapStoreToProps = ({statusR: {item}}) => {
     return {
-        selected: store.statusR.item
+        selected: item
     }
 }
 

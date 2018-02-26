@@ -1,17 +1,17 @@
 import { 
-    NEXTPAGE,
-    PREVPAGE,
-    SEARCHITEMSUPDATE,
-    UPDATETERMS,
-    SEARCHITEMTERMS,
+    NEXT_PAGE,
+    PREV_PAGE,
+    SEARCH_ITEMS_UPDATE,
+    UPDATE_TERMS,
+    SEARCH_ITEM_TERMS,
     PAGEMAX,
-    SETCATTYPE,
-    SETITEM
+    SET_CAT_TYPE,
+    SET_ITEM
 } from './index'
 
-export function nextPageList(firstPage=0, offPage=PAGEMAX){
+export function NEXT_PAGEList(firstPage=0, offPage=PAGEMAX){
     return {
-        type: NEXTPAGE,
+        type: NEXT_PAGE,
         payload: {
             first: firstPage,
             offset: offPage
@@ -19,9 +19,9 @@ export function nextPageList(firstPage=0, offPage=PAGEMAX){
     }
 }
 
-export function prevPageList(firstPage=0, offPage=PAGEMAX){
+export function PREV_PAGEList(firstPage=0, offPage=PAGEMAX){
     return {
-        type: PREVPAGE,
+        type: PREV_PAGE,
         payload: {
             first: firstPage,
             offset: offPage
@@ -31,21 +31,21 @@ export function prevPageList(firstPage=0, offPage=PAGEMAX){
 
 export function updateSearchItems(items=[]) {
     return {
-        type: SEARCHITEMSUPDATE,
+        type: SEARCH_ITEMS_UPDATE,
         payload: items
     }
 }
 
 export function setTerms(terms='') {
     return { 
-        type: UPDATETERMS, 
+        type: UPDATE_TERMS, 
         payload: terms
     }
 }
 
 export function searchItemsTerms(terms="", items=[]) {
     return { 
-        type: SEARCHITEMTERMS, 
+        type: SEARCH_ITEM_TERMS, 
         payload: {
             terms: terms,
             searchItems: items,
@@ -56,7 +56,7 @@ export function searchItemsTerms(terms="", items=[]) {
 
 export function setCategoryAndItems(type="", items=[]) {
     return {
-        type: SETCATTYPE,
+        type: SET_CAT_TYPE,
         payload: {
             category: type,
             searchItems: items
@@ -66,7 +66,7 @@ export function setCategoryAndItems(type="", items=[]) {
 
 export function setStatusItem(item=[]) {
     return {
-        type: SETITEM,
+        type: SET_ITEM,
         payload: item
     }
 }

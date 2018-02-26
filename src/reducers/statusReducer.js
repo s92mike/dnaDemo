@@ -1,17 +1,17 @@
 import { 
-    NEXTPAGE,
-    PREVPAGE,
+    NEXT_PAGE,
+    PREV_PAGE,
     PAGEMAX,
     GETCURRENTPAGE,
-    SEARCHITEMSUPDATE,
-    UPDATETERMS,
-    SEARCHITEMTERMS,
-    SETCATTYPE,
-    SETITEM,
-    SETSELECTEDITEMS,
-    FILLEDSEARCHPLAYERTERMSTATUS,
-    FILLEDPLAYERBYIDSTATUS,
-    UPDATEITEMSEARCH
+    SEARCH_ITEMS_UPDATE,
+    UPDATE_TERMS,
+    SEARCH_ITEM_TERMS,
+    SET_CAT_TYPE,
+    SET_ITEM,
+    SET_SELECTED_ITEMS,
+    FILLED_SEARCH_PLAYER_TERM_STATUS,
+    FILLED_PLAYER_BY_ID_STATUS,
+    UPDATE_ITEM_SEARCH
 } from '../actions'
 export default (state={
     category: "Heroes",
@@ -23,33 +23,33 @@ export default (state={
 }, action) => {
     const { type, payload } = action
     switch (type) {
-        case SETITEM:
+        case SET_ITEM:
             return {...state, item: payload}
                      
-        case UPDATETERMS:
+        case UPDATE_TERMS:
             return {...state, terms: payload}
             
-        case SEARCHITEMSUPDATE:
+        case SEARCH_ITEMS_UPDATE:
             return {...state, searchItems: payload}
             
-        case FILLEDSEARCHPLAYERTERMSTATUS:
+        case FILLED_SEARCH_PLAYER_TERM_STATUS:
             return {...state, searchItems: payload}
         case GETCURRENTPAGE:
             return {...state, pageRangeFrom: payload.first, pageRangeTo: payload.offset}
             
-        case NEXTPAGE:
+        case NEXT_PAGE:
             return {...state, pageRangeFrom: payload.first+PAGEMAX, pageRangeTo: payload.offset+PAGEMAX}
             
-        case PREVPAGE:
+        case PREV_PAGE:
             return {...state, pageRangeFrom: payload.first-PAGEMAX, pageRangeTo: payload.offset-PAGEMAX}
                  
-        case SETSELECTEDITEMS:
+        case SET_SELECTED_ITEMS:
             return {...state, item: payload[0], searchItems: payload}
-        case FILLEDPLAYERBYIDSTATUS:
+        case FILLED_PLAYER_BY_ID_STATUS:
             return {...state, item: action.payload}
-        case UPDATEITEMSEARCH:
+        case UPDATE_ITEM_SEARCH:
             return {...state, searchItems: [], item: {}}
-        case SEARCHITEMTERMS:
+        case SEARCH_ITEM_TERMS:
             return {
                 ...state, 
                 terms: payload.terms, 
@@ -58,7 +58,7 @@ export default (state={
                 pageRangeTo: payload.maxListStatus
             }
             
-        case SETCATTYPE:
+        case SET_CAT_TYPE:
             return {
                 ...state, 
                 category: payload.category,

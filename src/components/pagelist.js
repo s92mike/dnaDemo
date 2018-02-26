@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 
 import { 
-    OPENAPILINK,
-    DOTAICON,
+    OPEN_DOTA_API_LINK,
+    DOTA_ICON,
     CATEGORY1,
     CATEGORY2,
     selectItemsArray,
@@ -14,13 +14,13 @@ import { setStatusItemByAccount } from '../actions/axiosActions'
 
 class Pagelist extends Component {    
     setImgToDefault(event) {
-        event.target.src=DOTAICON
+        event.target.src=DOTA_ICON
     }
     render() {
         const { 
             data, 
             status, 
-            setItemProps
+            SET_ITEMProps
         } = this.props
         const selectedDisplay = selectItemsArray(status.category, status.searchItems, status.searchItems, status.searchItems)
         if(!selectedDisplay.items.length){
@@ -32,7 +32,7 @@ class Pagelist extends Component {
 
         }
         const listItems = selectedDisplay.items.slice(status.pageRangeFrom, status.pageRangeTo)
-            .map( item => <li onClick={()=>{setItemProps(item, status.category)}} 
+            .map( item => <li onClick={()=>{SET_ITEMProps(item, status.category)}} 
                 style={{cursor: 'pointer'}} 
                 className={`list-group-item${item.display_id==status.item.display_id?' active':''}`} 
                 key={item.display_id} >
@@ -53,7 +53,7 @@ const mapStoreToProps = (store) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        setItemProps: (item, category) => {
+        SET_ITEMProps: (item, category) => {
             if(category==CATEGORY2)
                 dispatch(setStatusItemByAccount(item))
             else

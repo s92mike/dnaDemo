@@ -4,7 +4,7 @@
   "description": "Using opendota api by getting players, heroes and team Descriptons & Statistics",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 8086",
+    "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Francis Miguel Abella",
@@ -16,6 +16,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "redux-logger": "^3.0.6",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"
   },
@@ -25,8 +26,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0"
   }

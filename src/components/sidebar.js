@@ -16,9 +16,10 @@ class Sidebar extends Component {
         )
     }
 }
-const mapStoreToProps = (store) => {
+
+const mapStoreToProps = ({statusR: { category }}) => {
     return {
-        category: store.statusR.category
+        category
     }
 }
 export default connect(mapStoreToProps)(Sidebar)

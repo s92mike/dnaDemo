@@ -18,6 +18,7 @@
   },
   devServer: {
     historyApiFallback: true, // serve in place to  404 response
-    contentBase: './'
+    contentBase: './',
+    port: 8086
   }
 } 

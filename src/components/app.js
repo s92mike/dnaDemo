@@ -1,5 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { 
+    Router, 
+    Route, 
+    Link, 
+    IndexRoute, 
+    hashHistory, 
+    browserHistory 
+} from 'react-router'
 
 import Sidebar from './sidebar'
 import Maincontainer from './maincontainer'
@@ -8,7 +16,7 @@ import { getAllInitialData, getAllInitialDataNoAxios } from '../actions/axiosAct
 
 class App extends Component {
     componentWillMount() {
-        //this.props.getAllInitializedData()
+        //this.props.getAllInitialData()
         this.props.getDemoData()
     }
     render() {
@@ -33,15 +41,15 @@ class App extends Component {
     }
 }
 
-const mapStoreToProps = (store) => {
+const mapStoreToProps = ({axiosR}) => {
     return {
-        data: store.axiosR
+        data: axiosR
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getAllInitializedData: () => {
+        GET_ALL_INITIALIZED_DATA: () => {
             dispatch(getAllInitialData())
         },
         getDemoData: () => {

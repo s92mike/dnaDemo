@@ -52,9 +52,7 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(setTerms(terms))
                 if(fetching){
                     source.cancel('fetching') 
-                    const newCancelTokenAxios = axios.CancelToken
-                    const newSource = newCancelTokenAxios.source()
-                    dispatch(searchPlayer(terms, newSource))
+                    dispatch(searchPlayer(terms, axios.CancelToken.source()))
                 } else{
                     dispatch(searchPlayer(terms, source))
                 } 
