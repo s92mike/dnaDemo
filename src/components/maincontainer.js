@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 import Itemsearch from './itemsearch'
-import Selectcategories from './selectcategories'
-import ContainerDetails from './containerdetails'
+import Selectcategories from '../container/selectcategories'
+import ContainerDetails from '../container/containerdetails'
 
 const Maincontainer = () => {
 	return (

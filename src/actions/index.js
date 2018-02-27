@@ -56,7 +56,7 @@ export const ACTIVE_LAST = "ACTIVE_LAST"
 export const DOTA_ICON = "/dota_icon.png"
 
 export const searchItemsByTerms = (terms, items) => {
-    return items.filter(item=>item.display_name.toLowerCase().match("^" + terms.toLowerCase()))
+    return items.filter(item=>item.display_name.toLowerCase().match("[^.]*" + terms.toLowerCase()+"[^.]*"))
 }
 export const preDefinedMessage = (category=CATEGORY1) => {
     switch(category) {

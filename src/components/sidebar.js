@@ -1,25 +1,17 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 
 import Pagelist from './pagelist'
-import Listpagination from './listpagination'
+import Listpagination from '../container/listpagination'
 
-class Sidebar extends Component { 
-    render() {
-        const { category } = this.props
-        return (
-            <div className="col-4 p-2 border">
-                <h4>{category} List</h4>
-                <Listpagination />
-                <Pagelist />
-            </div>
-        )
-    }
+const Sidebar = (props) => {
+    const { category } = props
+    return (
+        <div className="col-4 p-2 border">
+            <h4>{category} List</h4>
+            <Listpagination />
+            <Pagelist />
+        </div>
+    )
 }
 
-const mapStoreToProps = ({statusR: { category }}) => {
-    return {
-        category
-    }
-}
-export default connect(mapStoreToProps)(Sidebar)
+export default Sidebar

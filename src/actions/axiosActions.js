@@ -35,7 +35,11 @@ import {
     REJECTED_PLAYER_BY_ID,
     FILLED_PLAYER_BY_ID,
     FILLED_PLAYER_BY_ID_STATUS,
-    UPDATE_ITEM_SEARCH
+    UPDATE_ITEM_SEARCH,
+    CATEGORY1,
+    CATEGORY2,
+    CATEGORY3,
+    selectItemsArray
 } from './index'
 
 import {
@@ -47,7 +51,7 @@ import {
 const CancelTokenAxios = axios.CancelToken
 const sourceAxios = CancelTokenAxios.source();
 
-export function getAllInitialDataNoAxios() {
+export function getAllInitialDataNoAxios(category) {
     return function(dispatch){ //thunk middleware
         dispatch({
             type: FILLED_INITIALIZED_DATA, 
@@ -58,14 +62,16 @@ export function getAllInitialDataNoAxios() {
                 axiosSource: sourceAxios
             }
         })
+        
+        
         dispatch({
             type: SET_SELECTED_ITEMS,
-            payload: heroesData
+            payload: selectItemsArray(category, heroesData, playersData, teamsData).items
         })
     }
 }
 
-export function getAllInitialData() {
+export function getAllInitialData(category) {
     return function (dispatch) {
         dispatch({type: GET_ALL_INITIALIZED_DATA})
         const heroes = () => { return axios.get(`${OPEN_DOTA_API_LINK+OPEN_DOTA_API_LINK_API}/heroStats`) }
@@ -84,7 +90,7 @@ export function getAllInitialData() {
             })
             dispatch({
                 type: SET_SELECTED_ITEMS,
-                payload: heroes.data
+                payload: selectItemsArray(category, heroes.data, players.data, teams.data).items
             })          
         }))
         .catch((err) => {

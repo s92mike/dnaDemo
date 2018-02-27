@@ -45,10 +45,10 @@ class Pagelist extends Component {
         )
     }
 }
-const mapStoreToProps = (store) => {
+const mapStoreToProps = ({axiosR, statusR}) => {
     return {
-        data: store.axiosR,
-        status: store.statusR
+        data: axiosR,
+        status: statusR
     }
 }
 const mapDispatchToProps = (dispatch) => {

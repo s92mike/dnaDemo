@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
 import { checkObjectEmpty, DOTA_ICON } from '../actions'
 
-class ContainerDetails extends Component {
+export default class ContainerMainDetails extends Component {
     setImgToDefault(event) {
         event.target.src=DOTA_ICON
     }
@@ -27,15 +25,8 @@ class ContainerDetails extends Component {
                         {selected.display_line.map((perline,i)=><li className="list-group-item" key={`line_${i}`}>{perline}</li>)}
                     </ul>                 
                 </div>            
-            </div>          
+            </div>
         )
     }
 }
 
-const mapStoreToProps = ({statusR: {item}}) => {
-    return {
-        selected: item
-    }
-}
-
-export default connect(mapStoreToProps)(ContainerDetails)

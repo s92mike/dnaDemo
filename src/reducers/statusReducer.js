@@ -11,7 +11,8 @@ import {
     SET_SELECTED_ITEMS,
     FILLED_SEARCH_PLAYER_TERM_STATUS,
     FILLED_PLAYER_BY_ID_STATUS,
-    UPDATE_ITEM_SEARCH
+    UPDATE_ITEM_SEARCH,
+    CATEGORY1
 } from '../actions'
 export default (state={
     category: "Heroes",
@@ -44,7 +45,7 @@ export default (state={
             return {...state, pageRangeFrom: payload.first-PAGEMAX, pageRangeTo: payload.offset-PAGEMAX}
                  
         case SET_SELECTED_ITEMS:
-            return {...state, item: payload[0], searchItems: payload}
+            return {...state, item: payload[0], searchItems: payload, terms: ''}
         case FILLED_PLAYER_BY_ID_STATUS:
             return {...state, item: action.payload}
         case UPDATE_ITEM_SEARCH:

@@ -9,7 +9,7 @@ import {
     SET_ITEM
 } from './index'
 
-export function NEXT_PAGEList(firstPage=0, offPage=PAGEMAX){
+export function nextPageList(firstPage=0, offPage=PAGEMAX){
     return {
         type: NEXT_PAGE,
         payload: {
@@ -19,7 +19,7 @@ export function NEXT_PAGEList(firstPage=0, offPage=PAGEMAX){
     }
 }
 
-export function PREV_PAGEList(firstPage=0, offPage=PAGEMAX){
+export function prevPageList(firstPage=0, offPage=PAGEMAX){
     return {
         type: PREV_PAGE,
         payload: {
