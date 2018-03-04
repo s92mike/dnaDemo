@@ -2,7 +2,7 @@ import React from 'react'
 
 const notFound = () => {
 	return (
-		<div className="alert alert-dismissible alert-danger" style={{margin: '21px auto', width: 300}}>
+		<div className="alert alert-dismissible alert-danger" style={{margin: '21px auto', width: 300, padding: '21px'}}>
 			<strong>Oh snap!</strong> Page not found
 		</div>
 	)

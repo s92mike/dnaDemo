@@ -1,18 +1,18 @@
 import React from 'react'
-import { 
-    SELECTORS,
-    selectItemsArray
-} from '../redux/actions'
 
-const CategoriesLi = ({status, data, updateCategoryAndSelectedItems}) => {  
-    const categoryLI = SELECTORS.map((category,i)=><li key={`category_LI_${i}`} className="nav-item">
-            <a  onClick={()=>{updateCategoryAndSelectedItems(category, selectItemsArray(category,data.heroes,data.players,data.teams).items, data.fetching, data.axiosSource)}} 
-                className={`nav-link${status.category==category?' active':''}`} 
-                href="javascript:void(0)">{category}</a>
-        </li>)
+const CategoriesLi = () => {  
     return (
         <ul className="nav nav-tabs">
-            {categoryLI}
+            <li className="nav-item">
+                <a  onClick={()=>{}} 
+                    className={`nav-link`} 
+                    href="javascript:void(0)">sample link</a>
+            </li>
+            <li className="nav-item">
+                <a  onClick={()=>{}} 
+                    className={`nav-link`} 
+                    href="javascript:void(0)">sample link 2</a>
+            </li>            
         </ul>
     )            
 }

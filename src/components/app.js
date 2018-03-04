@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Headermenu from './headermenu'
-import searchList from './searchlist'
+import inventory from './inventory'
 import home from './home'
 import notFound from './404'
 
 const App = () => (   
     <Router>
-        <div>
+        <div style={{minHeight: 200}}>
             <Headermenu />
             <Switch>
                 <Route exact path="/" component={home} />
-                <Route path="/searchlist" component={searchList} />
+                <Route path="/inventory" component={inventory} />
                 <Route component={notFound} />
             </Switch>
         </div>

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Sidebar from '../components/sidebar'
+import Sidebar from '../commons/sidebar'
 
 const mapStoreToProps = ({statusR: { category }}) => {
     return {
