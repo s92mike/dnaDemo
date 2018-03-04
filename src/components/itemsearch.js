@@ -6,9 +6,9 @@ import {
     searchItemsByTerms,
     selectItemsArray,
     CATEGORY2
-} from '../actions'
-import { searchItemsTerms, setTerms } from '../actions/statusActions'
-import { searchPlayer } from '../actions/axiosActions'
+} from '../redux/actions'
+import { searchItemsTerms, setTerms } from '../redux/actions/statusActions'
+import { searchPlayer } from '../redux/actions/axiosActions'
 
 class Itemsearch extends PureComponent {
     render() {     

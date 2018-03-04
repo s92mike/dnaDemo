@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { setCategoryAndItems } from '../actions/statusActions'
+import { setCategoryAndItems } from '../redux/actions/statusActions'
 import CategoriesLi from '../components/categoriesli'
 
 const mapStoreToProps = ({axiosR, statusR}) => {

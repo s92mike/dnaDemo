@@ -8,9 +8,9 @@ import {
     CATEGORY2,
     selectItemsArray,
     preDefinedMessage
-} from '../actions'
-import { setStatusItem } from '../actions/statusActions'
-import { setStatusItemByAccount } from '../actions/axiosActions'
+} from '../redux/actions'
+import { setStatusItem } from '../redux/actions/statusActions'
+import { setStatusItemByAccount } from '../redux/actions/axiosActions'
 
 class Pagelist extends Component {    
     setImgToDefault(event) {

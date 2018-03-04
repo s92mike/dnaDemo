@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Pagination from '../components/pagination'
 
-import { nextPageList, prevPageList } from '../actions/statusActions'
+import { nextPageList, prevPageList } from '../redux/actions/statusActions'
 
 const mapStoreToProps = ({statusR}) => {
     return {

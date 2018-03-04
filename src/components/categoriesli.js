@@ -2,7 +2,7 @@ import React from 'react'
 import { 
     SELECTORS,
     selectItemsArray
-} from '../actions'
+} from '../redux/actions'
 
 const CategoriesLi = ({status, data, updateCategoryAndSelectedItems}) => {  
     const categoryLI = SELECTORS.map((category,i)=><li key={`category_LI_${i}`} className="nav-item">

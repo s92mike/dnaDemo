@@ -3,7 +3,7 @@ import {
     ACTIVE_FIRST,
     ACTIVE_LAST,
     checkDisabled
-} from '../actions'
+} from '../redux/actions'
 
 const Pagination = (props) => {
     const { 

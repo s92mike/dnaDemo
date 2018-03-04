@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import SidebarConnect from '../container/sidebarconnect'
 import Maincontainer from './maincontainer'
 
-import { getAllInitialData, getAllInitialDataNoAxios } from '../actions/axiosActions'
+import { getAllInitialData, getAllInitialDataNoAxios } from '../redux/actions/axiosActions'
 
 class Searchlist extends Component {
     componentWillMount() {

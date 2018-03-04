@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { checkObjectEmpty, DOTA_ICON } from '../actions'
+import { checkObjectEmpty, DOTA_ICON } from '../redux/actions'
 
 export default class ContainerMainDetails extends Component {
     setImgToDefault(event) {

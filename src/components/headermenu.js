@@ -1,5 +1,5 @@
 import React from 'react'
-import { DOTA_ICON } from '../actions'
+import { DOTA_ICON } from '../redux/actions'
 import { NavLink } from 'react-router-dom'
 const Headermenu = () => {
     return (
