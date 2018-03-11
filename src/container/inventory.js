@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import Inventory from '../components/inventory'
 
-class Inventory extends Component {
-	render() {
-		return (
-			<Inventory />
-		)
-	}
+class InventoryContainer extends Component {
+  componentDidMount() {
+    document.title = 'Items'
+  }
+  render() {
+    return (
+      <Inventory />
+    )
+  }
 }
+
+export default InventoryContainer

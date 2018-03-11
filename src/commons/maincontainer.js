@@ -1,13 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import ContainerDetails from '../container/containerdetails'
+import Sidebar from './sidebar'
+import Container from './container'
 
 const Maincontainer = () => {
-	return (
-            <div className="col-8 p-2 border">
-                <ContainerDetails />
-            </div>
-        )
+  return (
+    <div className='container v1'>
+      <div className='row'>
+        <Sidebar />
+        <Container />
+      </div>
+    </div>
+  )
 }
-
 export default Maincontainer
